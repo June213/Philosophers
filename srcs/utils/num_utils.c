@@ -6,7 +6,7 @@
 /*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:47:15 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/17 09:27:24 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:25:52 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static size_t	ft_strlen(char *str)
 {
 	size_t	i;
 
+	i = 0;
 	while (str[i])
 		i++;
 	return (i);

@@ -6,7 +6,7 @@
 #    By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 08:14:39 by jsalaber          #+#    #+#              #
-#    Updated: 2024/05/17 11:08:12 by jsalaber         ###   ########.fr        #
+#    Updated: 2024/05/17 13:16:20 by jsalaber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,10 @@ SRC_DIR = srcs
 OBJ_DIR	= obj
 
 SRCS	= $(SRC_DIR)/utils/num_utils.c \
+		$(SRC_DIR)/utils/time.c \
+		$(SRC_DIR)/utils/error.c \
+		$(SRC_DIR)/init.c \
+		$(SRC_DIR)/philo.c \
 
 
 OBJS    = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))

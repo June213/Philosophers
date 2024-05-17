@@ -6,7 +6,7 @@
 /*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 09:46:16 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/17 11:05:06 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/17 13:50:40 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ bool	init_args(t_args *args, char **argv)
 		if (!isint(argv[i]))
 			return (false);
 	args->num_philo = ft_atoi(argv[1]);
+	if (args->num_philo > 200)
+		return (false);
 	args->time_die = ft_atoi(argv[2]);
 	args->time_eat = ft_atoi(argv[3]);
 	args->time_sleep = ft_atoi(argv[4]);
@@ -41,6 +43,9 @@ void	init_philo(t_args *args)
 	int	i;
 
 	i = 0;
+	args->philo = malloc(args->num_philo * sizeof(t_philos));
+	if (!args->philo)
+		ft_error(MALLOC_ERR);
 	while (args->num_philo > i)
 	{
 		args->philo[i].nbr = i + 1;
