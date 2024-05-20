@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+         #
+#    By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/17 08:14:39 by jsalaber          #+#    #+#              #
-#    Updated: 2024/05/17 13:16:20 by jsalaber         ###   ########.fr        #
+#    Updated: 2024/05/20 09:53:44 by junesalaber      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ OBJ_DIR	= obj
 SRCS	= $(SRC_DIR)/utils/num_utils.c \
 		$(SRC_DIR)/utils/time.c \
 		$(SRC_DIR)/utils/error.c \
+		$(SRC_DIR)/utils/actions.c \
 		$(SRC_DIR)/init.c \
 		$(SRC_DIR)/philo.c \
 
@@ -34,7 +35,7 @@ OBJS    = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -pthread -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
@@ -44,7 +45,7 @@ clean:
 	$(RM) $(OBJ_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(OBJ_DIR)
 
 re: fclean all
 

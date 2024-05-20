@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   num_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:47:15 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/17 13:25:52 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:52:54 by junesalaber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ bool	isint(char *str)
 	size_t	len;
 	char	*int_max;
 
+	int_max = "2147483647";
 	if (*str == '+')
 		str++;
 	len = ft_strlen(str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
+/*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:48:06 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/17 14:22:30 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/20 09:54:51 by junesalaber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ bool	ft_get_forks(t_philos *philo)
 	}
 	if (ft_stop(philo))
 		return (false);
-	pthread_mutex_lock(&philo->r_fork);
+	pthread_mutex_lock(philo->r_fork);
 	if (!ft_write(philo, TAKE_FORK))
 	{
 		pthread_mutex_unlock(&philo->l_fork);
-		pthread_mutex_unlock(&philo->r_fork);
+		pthread_mutex_unlock(philo->r_fork);
 		return (false);
 	}
 	return (true);
@@ -92,7 +92,7 @@ void	*routine(void *src)
 			philo->args->philos_finished += (philo->args->num_meals != -1);
 		pthread_mutex_unlock(&philo->args->sync_mutex);
 		pthread_mutex_unlock(&philo->l_fork);
-		pthread_mutex_unlock(&philo->r_fork);
+		pthread_mutex_unlock(philo->r_fork);
 		if (!ft_sleep_think(philo))
 			break ;
 	}
