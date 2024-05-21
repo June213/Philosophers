@@ -6,7 +6,7 @@
 /*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:22:57 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/20 09:53:29 by junesalaber      ###   ########.fr       */
+/*   Updated: 2024/05/21 10:04:30 by junesalaber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ uint64_t	current_time(void);
 void		ft_usleep(uint64_t milisec);
 void		ft_error(char *str);
 void		*routine(void *src);
+void		ft_free(t_args *args);
 
 //INIT
 bool		init_args(t_args *args, char **argv);

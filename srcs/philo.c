@@ -6,7 +6,7 @@
 /*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:52:13 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/20 10:14:40 by junesalaber      ###   ########.fr       */
+/*   Updated: 2024/05/21 10:04:19 by junesalaber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < args.num_philo)
 		pthread_join(args.philo[i].thread, NULL);
-	i = -1;
-	while (++i < args.num_philo)
-		pthread_detach(args.philo[i].thread);
-	i = -1;
-	while (++i < args.num_philo)
-		pthread_mutex_destroy(&args.philo[i].l_fork);
+	// i = -1;
+	// while (++i < args.num_philo)
+	// 	pthread_detach(args.philo[i].thread);
+	// i = -1;
+	// while (++i < args.num_philo)
+	// 	pthread_mutex_destroy(&args.philo[i].l_fork);
+	// ft_free(args.philo);
+	ft_free(&args);
 	return (0);
 }
