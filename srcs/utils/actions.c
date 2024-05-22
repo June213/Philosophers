@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
+/*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:48:06 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/20 09:54:51 by junesalaber      ###   ########.fr       */
+/*   Updated: 2024/05/22 13:06:33 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	ft_write(t_philos *philo, char *str)
 		pthread_mutex_unlock(&philo->args->sync_mutex);
 		return (false);
 	}
-	printf("%llu %d %s\n", current_time() - philo->args->start_time,
+	printf("%lu %d %s\n", current_time() - philo->args->start_time,
 		philo->nbr, str);
 	pthread_mutex_unlock(&philo->args->sync_mutex);
 	return (true);
@@ -96,5 +96,5 @@ void	*routine(void *src)
 		if (!ft_sleep_think(philo))
 			break ;
 	}
-		return (NULL);
+	return (NULL);
 }

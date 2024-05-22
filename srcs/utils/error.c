@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
+/*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 13:11:51 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/21 10:03:25 by junesalaber      ###   ########.fr       */
+/*   Updated: 2024/05/22 13:09:42 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,11 @@ void	ft_error(char *str)
 	exit (EXIT_FAILURE);
 }
 
-
-void	ft_free(t_args *args)
+void	ft_free(t_args args)
 {
 	int	i;
-	
-	i = 0;
-	if (args->philo)
-	{
-		while (i < args->num_philo)
-		{
-			pthread_mutex_destroy(&args->philo[i].l_fork);
-			i++;
-		}
-		free(args->philo);
-	}
-	pthread_mutex_destroy(&args->sync_mutex);
-	
+
+	i = -1;
+	while (++i < args.num_philo - 1)
+		free(&args.philo[i]);
 }

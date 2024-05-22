@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junesalaberria <junesalaberria@student.    +#+  +:+       +#+        */
+/*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:52:13 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/21 10:04:19 by junesalaber      ###   ########.fr       */
+/*   Updated: 2024/05/22 13:10:06 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,20 @@
 bool	check_death_full(t_args *args, int *i)
 {
 	pthread_mutex_lock(&args->sync_mutex);
-	if (current_time() - args->philo[*i].last_meal_time >=
-		(unsigned long long)args->time_die
-			|| args->philos_finished == args->num_philo)
+	if (current_time() - args->philo[*i].last_meal_time
+		>= (unsigned long long)args->time_die
+		|| args->philos_finished == args->num_philo)
 	{
-		if (args->num_meals != -1 &&
-			args->philos_finished == args->num_philo)
+		if (args->num_meals != -1
+			&& args->philos_finished == args->num_philo)
 		{
 			args->full = true;
-			pthread_mutex_unlock(&args->philo[*i].l_fork);
 			printf("Every philosopher has eaten %d times\n", args->num_meals);
 		}
 		else
 		{
 			args->death = true;
-			pthread_mutex_unlock(&args->philo[*i].l_fork);
-			printf("%llu %d died\n",
+			printf("%lu %d died\n",
 				current_time() - args->start_time, args->philo[*i].nbr);
 		}
 		pthread_mutex_unlock(&args->sync_mutex);
@@ -45,8 +43,8 @@ bool	check_death_full(t_args *args, int *i)
 int	main(int argc, char **argv)
 {
 	t_args	args;
-	int i;
-	
+	int		i;
+
 	memset(&args, 0, sizeof(t_args));
 	if (argc < 5 || argc > 6 || !init_args(&args, argv))
 		return (1);
@@ -60,13 +58,12 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < args.num_philo)
 		pthread_join(args.philo[i].thread, NULL);
-	// i = -1;
-	// while (++i < args.num_philo)
-	// 	pthread_detach(args.philo[i].thread);
-	// i = -1;
-	// while (++i < args.num_philo)
-	// 	pthread_mutex_destroy(&args.philo[i].l_fork);
-	// ft_free(args.philo);
-	ft_free(&args);
+	i = -1;
+	while (++i < args.num_philo)
+		pthread_detach(args.philo[i].thread);
+	i = -1;
+	while (++i < args.num_philo)
+		pthread_mutex_destroy(&args.philo[i].l_fork);
+	ft_free(args);
 	return (0);
 }
