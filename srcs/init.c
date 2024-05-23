@@ -6,7 +6,7 @@
 /*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 09:46:16 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/22 12:21:37 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:13:56 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ bool	init_args(t_args *args, char **argv)
 	args->time_die = ft_atoi(argv[2]);
 	args->time_eat = ft_atoi(argv[3]);
 	args->time_sleep = ft_atoi(argv[4]);
+	if (args->time_die < 60 || args->time_eat < 60 || args->time_sleep < 60)
+		return (false);
 	args->num_meals = -1;
 	if (argv[5])
 	{
@@ -51,7 +53,9 @@ void	init_philo(t_args *args)
 		args->philo[i].nbr = i + 1;
 		args->philo[i].last_meal_time = args->start_time;
 		pthread_mutex_init(&args->philo[i].l_fork, NULL);
-		if (i + 1 == args->num_philo)
+		if (args->num_philo == 1)
+			args->philo[0].r_fork = NULL;
+		else if (i + 1 == args->num_philo)
 			args->philo[i].r_fork = &args->philo[0].l_fork;
 		else
 			args->philo[i].r_fork = &args->philo[i + 1].l_fork;

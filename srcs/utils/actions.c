@@ -6,7 +6,7 @@
 /*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:48:06 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/22 13:06:33 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:11:18 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ bool	ft_get_forks(t_philos *philo)
 		return (false);
 	}
 	if (ft_stop(philo))
+		return (false);
+	if (philo->r_fork == NULL)
 		return (false);
 	pthread_mutex_lock(philo->r_fork);
 	if (!ft_write(philo, TAKE_FORK))

@@ -6,7 +6,7 @@
 /*   By: jsalaber <jsalaber@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 08:52:13 by jsalaber          #+#    #+#             */
-/*   Updated: 2024/05/22 13:10:06 by jsalaber         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:24:29 by jsalaber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 
 	memset(&args, 0, sizeof(t_args));
 	if (argc < 5 || argc > 6 || !init_args(&args, argv))
-		return (1);
+		ft_error("Invalid argument");
 	init_philo(&args);
 	i = -1;
 	while (++i < args.num_philo)
@@ -60,10 +60,7 @@ int	main(int argc, char **argv)
 		pthread_join(args.philo[i].thread, NULL);
 	i = -1;
 	while (++i < args.num_philo)
-		pthread_detach(args.philo[i].thread);
-	i = -1;
-	while (++i < args.num_philo)
 		pthread_mutex_destroy(&args.philo[i].l_fork);
-	ft_free(args);
+	ft_free(&args);
 	return (0);
 }
