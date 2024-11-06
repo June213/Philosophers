@@ -4,9 +4,10 @@
 
 ## Uso
 
-Compila y ejecuta el programa:
-make
-./philosophers <num_philosophers> <time_to_die> <time_to_eat> <time_to_sleep> [<num_meals>]
+Compila y ejecuta el programa:  
+make  
+./philosophers <num_philosophers> <time_to_die> <time_to_eat> <time_to_sleep> [<num_meals>] 
+
 
 num_philosophers: Número de filósofos.
 
