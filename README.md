@@ -9,12 +9,12 @@ make
 ./philosophers <num_philosophers> <time_to_die> <time_to_eat> <time_to_sleep> [<num_meals>] 
 
 
-num_philosophers: Número de filósofos.
+**num_philosophers:** Número de filósofos.
 
-time_to_die: Tiempo que un filósofo puede estar sin comer antes de morir.
+**time_to_die:** Tiempo que un filósofo puede estar sin comer antes de morir.
 
-time_to_eat: Tiempo que un filósofo pasa comiendo.
+**time_to_eat:** Tiempo que un filósofo pasa comiendo.
 
-time_to_sleep: Tiempo que un filósofo pasa durmiendo.
+**time_to_sleep:** Tiempo que un filósofo pasa durmiendo.
 
-num_meals (opcional): Número de comidas que cada filósofo debe realizar.
+**num_meals (opcional):** Número de comidas que cada filósofo debe realizar.
